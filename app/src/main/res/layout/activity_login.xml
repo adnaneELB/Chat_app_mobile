@@ -39,7 +39,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/username"
+                android:id="@+id/email"
                 android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="10dp"
@@ -77,12 +77,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/signupHere"
         android:padding="8dp"
         android:layout_marginTop="20dp"
         android:text="Not Yet registered ? SignUp Now"
         android:textSize="14sp"
         android:textAlignment="center"
         android:textColor="@color/blues"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"
+        android:clickable="true"/>
 
 </LinearLayout>
