@@ -61,13 +61,25 @@
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background"
                 android:layout_marginTop="40dp"/>
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:padding="8dp"
+                android:text="Cuenta Premium"
+                android:textColor="@color/blues"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:id="@+id/registerBtn"
                 android:text="Login"
                 android:textSize="18sp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="25dp"
                 android:backgroundTint="#7899FC"
                 app:cornerRadius="20dp"/>
 
