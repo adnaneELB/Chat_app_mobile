@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        logoutBtn=  findViewById(R.id.logoutBtn);
+       // logoutBtn=  findViewById(R.id.logoutBtn);
         fireAuth = FirebaseAuth.getInstance();
     }
 
