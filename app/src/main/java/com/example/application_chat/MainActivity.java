@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.example.fragments.Calls_Fragment;
+import com.example.fragments.Contactos_Fragment;
+import com.example.fragments.Profile_Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,16 +28,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         fireAuth = FirebaseAuth.getInstance();
         firebaseUser = fireAuth.getCurrentUser();
-        selectedFragment = new Contactos_Fragment();
+      /*  selectedFragment = new Calls_Fragment();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, selectedFragment)
-                .commit();
+                .commit();*/
 
         // check if user is not signed in
         if (firebaseUser == null) {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
             finish();
-        } /*else {
+        } else {
             // retrieve user type from Firebase database
             FirebaseFirestore.getInstance().collection("users")
                     .document(firebaseUser.getUid())
@@ -43,14 +46,14 @@ public class MainActivity extends AppCompatActivity {
                         userType = documentSnapshot.getString("type");
 
                         // inflate layout based on user type
-                        if (userType.equals("standard")) {
+                     /*   if (userType.equals("standard")) {
                             setContentView(R.layout.activity_main_free);
                         } else {
                             setContentView(R.layout.activity_main_premium);
                         }
 
                         // find views and set up bottom navigation view
-                        logoutBtn = findViewById(R.id.logoutBtn);
+                        logoutBtn = findViewById(R.id.logoutBtn);*/
                         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
 
                         bottomNav.setOnNavigationItemSelectedListener(menuItem -> {
@@ -58,19 +61,19 @@ public class MainActivity extends AppCompatActivity {
 
                             switch (menuItem.getItemId()) {
                                 case R.id.contactos_Fragment:
-                                    selectedFragment = new ContactsFragment();
+                                    selectedFragment = new Contactos_Fragment();
                                     break;
                                 case R.id.calls_Fragment:
-                                    selectedFragment = new CallsFragment();
+                                    selectedFragment = new Calls_Fragment();
                                     break;
                                 case R.id.profile_Fragment:
-                                    selectedFragment = new ProfileFragment();
+                                    selectedFragment = new Profile_Fragment();
                                     break;
                                /* case R.id.nav_map:
                                     if (userType.equals("premium")) {
                                         selectedFragment = new MapFragment();
                                     }
-                                    break;
+                                    break;*/
                             }
 
                             getSupportFragmentManager().beginTransaction()
@@ -82,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
                         // set default fragment
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.fragment_container, new ContactsFragment())
+                                .replace(R.id.fragment_container, new Contactos_Fragment())
                                 .commit();
 
                         logoutBtn.setOnClickListener(view -> {
@@ -90,6 +93,6 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(new Intent(MainActivity.this, LoginActivity.class));
                         });
                     });
-        }*/
+        }
     }
 }

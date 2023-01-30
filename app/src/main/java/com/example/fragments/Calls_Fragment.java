@@ -1,12 +1,21 @@
-package com.example.application_chat;
+package com.example.fragments;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.adapters.Calls_Card_View;
+import com.example.models.Contactos;
+import com.example.application_chat.R;
+import com.example.models.Llamadas;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +23,10 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class Calls_Fragment extends Fragment {
+    View view;
+    RecyclerView recyclerView;
+    ArrayList<Llamadas> arrayList;
+    Calls_Card_View adapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +72,21 @@ public class Calls_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_calls_, container, false);
+        view= inflater.inflate(R.layout.fragment_calls_, container, false);
+        recyclerView =view.findViewById(R.id.calls_rcy);
+        arrayList= new ArrayList<>();
+        arrayList.add(new Llamadas("adnane",R.mipmap.ic_launcher,R.drawable.baseline_call_made_24));
+        arrayList.add(new Llamadas("yassine",R.mipmap.ic_launcher,R.drawable.baseline_call_received_24));
+        arrayList.add(new Llamadas("adnane",R.mipmap.ic_launcher,R.drawable.baseline_call_made_24));
+        arrayList.add(new Llamadas("yassine",R.mipmap.ic_launcher,R.drawable.baseline_call_received_24));
+        arrayList.add(new Llamadas("adnane",R.mipmap.ic_launcher,R.drawable.baseline_call_made_24));
+        arrayList.add(new Llamadas("yassine",R.mipmap.ic_launcher,R.drawable.baseline_call_received_24));
+
+        adapter= new Calls_Card_View(container.getContext(),arrayList);
+        LinearLayoutManager llm=new LinearLayoutManager(getContext(),recyclerView.VERTICAL,false);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(llm);
+
+        return view;
     }
 }

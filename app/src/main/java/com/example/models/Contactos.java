@@ -1,8 +1,9 @@
-package com.example.application_chat;
+package com.example.models;
 
 public class Contactos {
     private String nombre;
     int foto;
+
 
     public String getNombre() {
         return nombre;

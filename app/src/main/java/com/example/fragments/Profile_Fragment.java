@@ -1,28 +1,21 @@
-package com.example.application_chat;
+package com.example.fragments;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewTreeViewModelKt;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
+import com.example.application_chat.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Contactos_Fragment#newInstance} factory method to
+ * Use the {@link Profile_Fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Contactos_Fragment extends Fragment {
-    View view;
-    RecyclerView recyclerView;
-    ArrayList<Contactos> arrayList;
-    Chat_Recycle_View adapter;
+public class Profile_Fragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,7 +26,7 @@ public class Contactos_Fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Contactos_Fragment() {
+    public Profile_Fragment() {
         // Required empty public constructor
     }
 
@@ -43,11 +36,11 @@ public class Contactos_Fragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Contactos_Fragment.
+     * @return A new instance of fragment Profile_Fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static Contactos_Fragment newInstance(String param1, String param2) {
-        Contactos_Fragment fragment = new Contactos_Fragment();
+    public static Profile_Fragment newInstance(String param1, String param2) {
+        Profile_Fragment fragment = new Profile_Fragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -68,17 +61,6 @@ public class Contactos_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view= inflater.inflate(R.layout.fragment_contactos_, container, false);
-        recyclerView =view.findViewById(R.id.chat_rcy);
-        arrayList= new ArrayList<>();
-        arrayList.add(new Contactos("adnaen",R.mipmap.ic_launcher));
-        arrayList.add(new Contactos("adnaen",R.mipmap.ic_launcher));
-        adapter= new Chat_Recycle_View(container.getContext(),arrayList);
-        LinearLayoutManager llm=new LinearLayoutManager(getContext(),recyclerView.VERTICAL,false);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(llm);
-
-        return view;
-
+        return inflater.inflate(R.layout.fragment_profile_, container, false);
     }
 }

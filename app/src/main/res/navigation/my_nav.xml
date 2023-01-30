@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/contactos_Fragment"
-        android:name="com.example.application_chat.Contactos_Fragment"
+        android:name="com.example.fragments.Contactos_Fragment"
         android:label="fragment_contactos_"
         tools:layout="@layout/fragment_contactos_" />
     <fragment
         android:id="@+id/calls_Fragment"
-        android:name="com.example.application_chat.Calls_Fragment"
+        android:name="com.example.fragments.Calls_Fragment"
         android:label="fragment_calls_"
         tools:layout="@layout/fragment_calls_" />
     <fragment
         android:id="@+id/profile_Fragment"
-        android:name="com.example.application_chat.Profile_Fragment"
+        android:name="com.example.fragments.Profile_Fragment"
         android:label="fragment_profile_"
         tools:layout="@layout/fragment_profile_" />
 </navigation>
