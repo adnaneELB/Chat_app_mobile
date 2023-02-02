@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.fragments.Calls_Fragment;
 import com.example.fragments.Contactos_Fragment;
@@ -28,12 +29,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         fireAuth = FirebaseAuth.getInstance();
         firebaseUser = fireAuth.getCurrentUser();
-      /*  selectedFragment = new Calls_Fragment();
+
+      selectedFragment = new MapsFragment();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, selectedFragment)
-                .commit();*/
+                .commit();
 
         // check if user is not signed in
+
+
         if (firebaseUser == null) {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
             finish();
@@ -44,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                     .get()
                     .addOnSuccessListener(documentSnapshot -> {
                         userType = documentSnapshot.getString("type");
-
+                        Toast.makeText(this, "kahdam", Toast.LENGTH_SHORT).show();
                         // inflate layout based on user type
                      /*   if (userType.equals("standard")) {
                             setContentView(R.layout.activity_main_free);
@@ -56,17 +60,21 @@ public class MainActivity extends AppCompatActivity {
                         logoutBtn = findViewById(R.id.logoutBtn);*/
                         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
 
-                        bottomNav.setOnNavigationItemSelectedListener(menuItem -> {
-                            Fragment selectedFragment = null;
+                        bottomNav.setOnItemSelectedListener(menuItem -> {
 
+
+                            Fragment selectedFragment = null;
                             switch (menuItem.getItemId()) {
                                 case R.id.contactos_Fragment:
+
                                     selectedFragment = new Contactos_Fragment();
                                     break;
                                 case R.id.calls_Fragment:
+
                                     selectedFragment = new Calls_Fragment();
                                     break;
                                 case R.id.profile_Fragment:
+
                                     selectedFragment = new Profile_Fragment();
                                     break;
                                /* case R.id.nav_map:

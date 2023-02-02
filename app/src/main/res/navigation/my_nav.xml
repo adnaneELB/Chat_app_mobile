@@ -20,4 +20,9 @@
         android:name="com.example.fragments.Profile_Fragment"
         android:label="fragment_profile_"
         tools:layout="@layout/fragment_profile_" />
+    <fragment
+        android:id="@+id/mapsFragment2"
+        android:name="com.example.application_chat.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" />
 </navigation>
