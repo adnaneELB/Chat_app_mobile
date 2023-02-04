@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_profile_" />
     <fragment
         android:id="@+id/mapsFragment2"
-        android:name="com.example.application_chat.MapsFragment"
+        android:name="com.example.fragments.MapsFragment"
         android:label="fragment_maps"
         tools:layout="@layout/fragment_maps" />
 </navigation>
