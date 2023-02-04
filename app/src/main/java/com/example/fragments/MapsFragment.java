@@ -84,7 +84,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                     mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 15f));
 
                     // Add markers for Orange stores within 2km of the current location
-                    int numberOfStores = new Random().nextInt(10) + 5;
+                    int numberOfStores = new Random().nextInt(5) + 5;
                     for (int i = 0; i < numberOfStores; i++) {
                         double latitude = currentLocation.latitude + (Math.random() - 0.5) * 0.01;
                         double longitude = currentLocation.longitude + (Math.random() - 0.5) * 0.01;
