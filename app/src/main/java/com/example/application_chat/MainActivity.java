@@ -46,13 +46,14 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
             finish();
         } else {
+
             // retrieve user type from Firebase database
             FirebaseFirestore.getInstance().collection("users")
                     .document(firebaseUser.getUid())
                     .get()
                     .addOnSuccessListener(documentSnapshot -> {
                         userType = documentSnapshot.getString("type");
-                        Toast.makeText(this, "kahdam", Toast.LENGTH_SHORT).show();
+
                         // inflate layout based on user type
                      /*   if (userType.equals("standard")) {
                             setContentView(R.layout.activity_main_free);
@@ -100,10 +101,10 @@ public class MainActivity extends AppCompatActivity {
                                 .replace(R.id.fragment_container, new Contactos_Fragment())
                                 .commit();
 
-                        logoutBtn.setOnClickListener(view -> {
+                     /*   logoutBtn.setOnClickListener(view -> {
                             fireAuth.signOut();
                             startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                        });
+                        });*/
                     });
         }
     }
