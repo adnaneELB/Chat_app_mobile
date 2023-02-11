@@ -75,12 +75,12 @@ public class Calls_Fragment extends Fragment {
         view= inflater.inflate(R.layout.fragment_calls_, container, false);
         recyclerView =view.findViewById(R.id.calls_rcy);
         arrayList= new ArrayList<>();
-        arrayList.add(new Llamadas("adnane",R.mipmap.ic_launcher,R.drawable.baseline_call_made_24));
-        arrayList.add(new Llamadas("yassine",R.mipmap.ic_launcher,R.drawable.baseline_call_received_24));
-        arrayList.add(new Llamadas("adnane",R.mipmap.ic_launcher,R.drawable.baseline_call_made_24));
-        arrayList.add(new Llamadas("yassine",R.mipmap.ic_launcher,R.drawable.baseline_call_received_24));
-        arrayList.add(new Llamadas("adnane",R.mipmap.ic_launcher,R.drawable.baseline_call_made_24));
-        arrayList.add(new Llamadas("yassine",R.mipmap.ic_launcher,R.drawable.baseline_call_received_24));
+        arrayList.add(new Llamadas("adnane",R.drawable.image1,R.drawable.baseline_call_made_24));
+        arrayList.add(new Llamadas("yassine",R.drawable.image1,R.drawable.baseline_call_received_24));
+        arrayList.add(new Llamadas("adnane",R.drawable.image1,R.drawable.baseline_call_made_24));
+        arrayList.add(new Llamadas("yassine",R.drawable.image1,R.drawable.baseline_call_received_24));
+        arrayList.add(new Llamadas("adnane",R.drawable.image1,R.drawable.baseline_call_made_24));
+        arrayList.add(new Llamadas("yassine",R.drawable.image1,R.drawable.baseline_call_received_24));
 
         adapter= new Calls_Card_View(container.getContext(),arrayList);
         LinearLayoutManager llm=new LinearLayoutManager(getContext(),recyclerView.VERTICAL,false);

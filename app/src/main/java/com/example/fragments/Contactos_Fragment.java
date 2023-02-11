@@ -74,10 +74,19 @@ public class Contactos_Fragment extends Fragment {
         view= inflater.inflate(R.layout.fragment_contactos_, container, false);
         recyclerView =view.findViewById(R.id.chat_rcy);
         arrayList= new ArrayList<>();
-        arrayList.add(new Contactos("adnaen",R.mipmap.ic_launcher));
-        arrayList.add(new Contactos("adnaen",R.mipmap.ic_launcher));
+        arrayList.add(new Contactos("adnaen",R.drawable.image1));
+        arrayList.add(new Contactos("yassine",R.drawable.image1));
+        arrayList.add(new Contactos("badre",R.drawable.image1));
+        arrayList.add(new Contactos("julian",R.drawable.image1));
+        arrayList.add(new Contactos("roman",R.drawable.image1));
+        arrayList.add(new Contactos("alejandro",R.drawable.image1));
+        arrayList.add(new Contactos("yassine",R.drawable.image1));
+        arrayList.add(new Contactos("badre",R.drawable.image1));
+        arrayList.add(new Contactos("julian",R.drawable.image1));
+        arrayList.add(new Contactos("roman",R.drawable.image1));
+        arrayList.add(new Contactos("alejandro",R.drawable.image1));
         adapter= new Chat_Recycle_View(container.getContext(),arrayList);
-        LinearLayoutManager llm=new LinearLayoutManager(getContext(),recyclerView.VERTICAL,false);
+        LinearLayoutManager llm=new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(llm);
 

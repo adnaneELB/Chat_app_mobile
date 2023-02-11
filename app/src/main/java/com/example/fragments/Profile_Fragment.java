@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.application_chat.R;
 
@@ -16,7 +17,8 @@ import com.example.application_chat.R;
  * create an instance of this fragment.
  */
 public class Profile_Fragment extends Fragment {
-
+    ImageView image;
+    View view;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -55,12 +57,16 @@ public class Profile_Fragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile_, container, false);
+
+        view= inflater.inflate(R.layout.fragment_profile_, container, false);
+        view.findViewById(R.id.profile_img).setBackgroundResource(R.drawable.image1);
+        return view;
     }
 }

@@ -30,14 +30,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_premium);
         fireAuth = FirebaseAuth.getInstance();
         firebaseUser = fireAuth.getCurrentUser();
 
-      selectedFragment = new MapsFragment();
+     /* selectedFragment = new Profile_Fragment();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, selectedFragment)
-                .commit();
+                .commit();*/
 
         // check if user is not signed in
 

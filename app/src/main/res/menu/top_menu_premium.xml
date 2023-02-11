@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/contactos_Fragment"
+        android:icon="@drawable/baseline_contact_page_24"
+        android:title="Contactos">
+
+    </item>
+    <item
+        android:id="@+id/calls_Fragment"
+        android:icon="@drawable/baseline_call_24"
+        android:title="Calls">
+
+    </item>
+    <item
+        android:id="@+id/profile_Fragment"
+        android:icon="@drawable/baseline_person_24"
+        android:title="Profile">
+
+    </item>
+    <item
+        android:id="@+id/mapa"
+        android:icon="@drawable/baseline_location_on_24"
+        android:title="Mapa">
+
+    </item>
+
+</menu>

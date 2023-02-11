@@ -26,7 +26,7 @@
             android:layout_centerHorizontal="true"
             android:background="#F8B14A"
             android:layout_margin="0dp"
-            app:menu="@menu/top_menu">
+            app:menu="@menu/top_menu_premium">
 
         </com.google.android.material.bottomnavigation.BottomNavigationView>
         <androidx.fragment.app.FragmentContainerView
@@ -40,10 +40,5 @@
             app:navGraph="@navigation/my_nav" />
 
     </com.google.android.material.appbar.AppBarLayout>
-
-
-
-
-
 
 </RelativeLayout>

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,6 +38,7 @@ public class Chat_Recycle_View extends RecyclerView.Adapter<Chat_Recycle_View.Vi
 
     holder.imageView.setImageResource(arrayList.get(position).getFoto());
     holder.textView.setText(arrayList.get(position).getNombre());
+    
     }
 
     @Override
@@ -51,6 +53,12 @@ public class Chat_Recycle_View extends RecyclerView.Adapter<Chat_Recycle_View.Vi
             super(itemView);
             imageView=itemView.findViewById(R.id.img);
             textView=itemView.findViewById(R.id.nombre);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context.getApplicationContext(), textView.getText().toString(), Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 }
