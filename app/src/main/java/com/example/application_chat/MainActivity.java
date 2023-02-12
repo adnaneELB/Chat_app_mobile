@@ -1,5 +1,6 @@
 package com.example.application_chat;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -13,9 +14,15 @@ import com.example.fragments.Calls_Fragment;
 import com.example.fragments.Contactos_Fragment;
 import com.example.fragments.MapsFragment;
 import com.example.fragments.Profile_Fragment;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,13 +55,27 @@ public class MainActivity extends AppCompatActivity {
         } else {
 
             // retrieve user type from Firebase database
-            FirebaseFirestore.getInstance().collection("users")
-                    .document(firebaseUser.getUid())
-                    .get()
-                    .addOnSuccessListener(documentSnapshot -> {
-                        userType = documentSnapshot.getString("type");
+            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(firebaseUser.getUid());
+            userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.child("userType").exists() && dataSnapshot.child("userType").getValue(String.class).equals("premium")) {
+                        userType = "premium";
+                    } else {
+                        userType = null;
+                    }
+                }
 
-                        // inflate layout based on user type
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+
+
+            });
+
+
+            // inflate layout based on user type
                      /*   if (userType.equals("standard")) {
                             setContentView(R.layout.activity_main_free);
                         } else {
@@ -82,11 +103,11 @@ public class MainActivity extends AppCompatActivity {
 
                                     selectedFragment = new Profile_Fragment();
                                     break;
-                               /* case R.id.nav_map:
+                               case R.id.nav_map:
                                     if (userType.equals("premium")) {
-                                        selectedFragment = new MapFragment();
+                                        selectedFragment = new MapsFragment();
                                     }
-                                    break;*/
+                                    break;
                             }
 
                             getSupportFragmentManager().beginTransaction()
