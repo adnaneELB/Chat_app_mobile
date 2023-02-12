@@ -1,5 +1,6 @@
 package com.example.application_chat;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -16,6 +17,11 @@ import com.example.fragments.Profile_Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,12 +40,24 @@ public class MainActivity extends AppCompatActivity {
         fireAuth = FirebaseAuth.getInstance();
         firebaseUser = fireAuth.getCurrentUser();
 
-     /* selectedFragment = new Profile_Fragment();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, selectedFragment)
-                .commit();*/
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(firebaseUser.getUid());
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child("userType").exists() && dataSnapshot.child("userType").getValue(String.class).equals("premium")) {
+                    userType = "premium";
+                } else {
+                    userType = null;
+                }
+            }
 
-        // check if user is not signed in
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+        });
+
 
 
         if (firebaseUser == null) {
