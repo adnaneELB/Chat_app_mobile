@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_premium);
+        setContentView(R.layout.activity_main);
         fireAuth = FirebaseAuth.getInstance();
         firebaseUser = fireAuth.getCurrentUser();
 
@@ -47,22 +47,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
         } else {
 
-            // retrieve user type from Firebase database
-            FirebaseFirestore.getInstance().collection("users")
-                    .document(firebaseUser.getUid())
-                    .get()
-                    .addOnSuccessListener(documentSnapshot -> {
-                        userType = documentSnapshot.getString("type");
 
-                        // inflate layout based on user type
-                     /*   if (userType.equals("standard")) {
-                            setContentView(R.layout.activity_main_free);
-                        } else {
-                            setContentView(R.layout.activity_main_premium);
-                        }
-
-                        // find views and set up bottom navigation view
-                        logoutBtn = findViewById(R.id.logoutBtn);*/
                         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
 
                         bottomNav.setOnItemSelectedListener(menuItem -> {
@@ -101,11 +86,9 @@ public class MainActivity extends AppCompatActivity {
                                 .replace(R.id.fragment_container, new Contactos_Fragment())
                                 .commit();
 
-                     /*   logoutBtn.setOnClickListener(view -> {
-                            fireAuth.signOut();
-                            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                        });*/
-                    });
+
+
+
         }
     }
 }
