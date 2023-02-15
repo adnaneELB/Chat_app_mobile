@@ -31,6 +31,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 
@@ -39,6 +40,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
     MapView mMapView;
     View mView;
 
+    ArrayList<LatLng> locacations=new ArrayList<>();
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +92,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                         double latitude = currentLocation.latitude + (Math.random() - 0.5) * 0.01;
                         double longitude = currentLocation.longitude + (Math.random() - 0.5) * 0.01;
                         LatLng storeLocation = new LatLng(latitude, longitude);
+                        locacations.add(storeLocation);
                         mMap.addMarker(new MarkerOptions().position(storeLocation).title("Orange Store"));
 
                     }
