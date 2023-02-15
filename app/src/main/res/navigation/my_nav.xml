@@ -27,12 +27,12 @@
         tools:layout="@layout/fragment_maps" />
     <fragment
         android:id="@+id/qrFragment"
-        android:name="com.example.application_chat.QrFragment"
+        android:name="com.example.fragments.QrFragment"
         android:label="fragment_qr"
         tools:layout="@layout/fragment_qr" />
     <fragment
         android:id="@+id/webViewFragment"
-        android:name="com.example.application_chat.WebViewFragment"
+        android:name="com.example.fragments.WebViewFragment"
         android:label="fragment_web_view"
         tools:layout="@layout/fragment_web_view" />
 </navigation>

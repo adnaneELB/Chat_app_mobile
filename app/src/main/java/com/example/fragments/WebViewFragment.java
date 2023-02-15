@@ -1,4 +1,4 @@
-package com.example.application_chat;
+package com.example.fragments;
 
 import android.os.Bundle;
 
@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.example.application_chat.R;
 
 /**
  * A simple {@link Fragment} subclass.
