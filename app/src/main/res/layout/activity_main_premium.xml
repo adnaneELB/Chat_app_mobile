@@ -1,29 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        app:elevation="0dp"
-        android:layout_height="wrap_content">
-        <com.google.android.material.appbar.MaterialToolbar
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/P_toolbar"
             android:layout_width="match_parent"
             android:background="#F8B14A"
             app:elevation="0dp"
             app:title="ChatApp"
             android:layout_height="wrap_content">
 
-        </com.google.android.material.appbar.MaterialToolbar>
+        </androidx.appcompat.widget.Toolbar>
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_nav"
             app:elevation="0dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
             android:background="#F8B14A"
             android:layout_margin="0dp"
             app:menu="@menu/top_menu_premium">
@@ -39,6 +36,6 @@
             android:background="@color/white"
             app:navGraph="@navigation/my_nav" />
 
-    </com.google.android.material.appbar.AppBarLayout>
 
-</RelativeLayout>
+
+</LinearLayout>

@@ -1,6 +1,9 @@
 package com.example.adapters;
 
+
+
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +12,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.application_chat.LoginActivity;
+import com.example.application_chat.MainActivity;
 import com.example.application_chat.R;
 import com.example.models.Contactos;
 
@@ -56,7 +62,12 @@ public class Chat_Recycle_View extends RecyclerView.Adapter<Chat_Recycle_View.Vi
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context.getApplicationContext(), textView.getText().toString(), Toast.LENGTH_SHORT).show();
+                    Intent intent =new Intent(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_SUBJECT,"text");
+                    intent.putExtra(Intent.EXTRA_TEXT,textView.getText().toString());
+                    view.getContext().startActivity(Intent.createChooser(intent,"share via"));
+
                 }
             });
         }

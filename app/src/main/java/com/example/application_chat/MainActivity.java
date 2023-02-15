@@ -2,11 +2,16 @@ package com.example.application_chat;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -14,7 +19,9 @@ import com.example.fragments.Calls_Fragment;
 import com.example.fragments.Contactos_Fragment;
 import com.example.fragments.MapsFragment;
 import com.example.fragments.Profile_Fragment;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -26,9 +33,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
     Button logoutBtn;
+
     FirebaseAuth fireAuth;
     FirebaseUser firebaseUser;
-    String userType;
+    String userType="";
     Fragment selectedFragment;
 
 
@@ -36,7 +44,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+
+
         fireAuth = FirebaseAuth.getInstance();
         firebaseUser = fireAuth.getCurrentUser();
 
@@ -46,9 +56,20 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child("userType").exists() && dataSnapshot.child("userType").getValue(String.class).equals("premium")) {
                     userType = "premium";
+                    setContentView(R.layout.activity_main_premium);
+                    Toolbar materialToolbar=findViewById(R.id.P_toolbar);
+                    setSupportActionBar(materialToolbar);
+                    setLayout();
                 } else {
-                    userType = null;
+                    userType = "basic";
+                    setContentView(R.layout.activity_main);
+                    Toolbar materialToolbar=findViewById(R.id.toolbar);
+                    setSupportActionBar(materialToolbar);
+                    setLayout();
+
+
                 }
+
             }
 
             @Override
@@ -58,51 +79,80 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.side_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Fragment selectedFragment = null;
+       switch (item.getItemId()){
+           case R.id.qr_tab:
+               selectedFragment = new QrFragment();break;
+
+           case R.id.page_tab:
+               selectedFragment = new WebViewFragment();break;
+
+           case R.id.ajustes_tab:
+               Toast.makeText(this, "ajustes", Toast.LENGTH_SHORT).show();
+               return true;
+
+       }
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, selectedFragment)
+                .commit();
+        return super.onOptionsItemSelected(item);
 
 
+    }
+
+    void setLayout(){
         if (firebaseUser == null) {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
             finish();
         } else {
 
+            BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
 
-                        BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
-
-                        bottomNav.setOnItemSelectedListener(menuItem -> {
+            bottomNav.setOnItemSelectedListener(menuItem -> {
 
 
-                            Fragment selectedFragment = null;
-                            switch (menuItem.getItemId()) {
-                                case R.id.contactos_Fragment:
+                Fragment selectedFragment = null;
+                switch (menuItem.getItemId()) {
+                    case R.id.contactos_Fragment:
 
-                                    selectedFragment = new Contactos_Fragment();
-                                    break;
-                                case R.id.calls_Fragment:
+                        selectedFragment = new Contactos_Fragment();
+                        break;
+                    case R.id.calls_Fragment:
 
-                                    selectedFragment = new Calls_Fragment();
-                                    break;
-                                case R.id.profile_Fragment:
+                        selectedFragment = new Calls_Fragment();
+                        break;
+                    case R.id.profile_Fragment:
 
-                                    selectedFragment = new Profile_Fragment();
-                                    break;
-                               /* case R.id.nav_map:
-                                    if (userType.equals("premium")) {
-                                        selectedFragment = new MapFragment();
-                                    }
-                                    break;*/
-                            }
+                        selectedFragment = new Profile_Fragment();
+                        break;
+                    case R.id.mapa:
 
-                            getSupportFragmentManager().beginTransaction()
-                                    .replace(R.id.fragment_container, selectedFragment)
-                                    .commit();
+                        selectedFragment = new MapsFragment();
 
-                            return true;
-                        });
+                        break;
+                }
 
-                        // set default fragment
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.fragment_container, new Contactos_Fragment())
-                                .commit();
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, selectedFragment)
+                        .commit();
+
+                return true;
+            });
+
+            // set default fragment
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, new Contactos_Fragment())
+                    .commit();
 
 
 

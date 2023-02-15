@@ -31,6 +31,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class MapsFragment extends Fragment implements OnMapReadyCallback {
@@ -65,16 +66,16 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-        MapsInitializer.initialize(getContext());
+        MapsInitializer.initialize(requireContext());
 
         mMap = googleMap;
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             return;
         }
-        FusedLocationProviderClient client = LocationServices.getFusedLocationProviderClient(getActivity());
-        client.getLastLocation().addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
+        FusedLocationProviderClient client = LocationServices.getFusedLocationProviderClient(requireActivity());
+        client.getLastLocation().addOnSuccessListener(requireActivity(), new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
                 if (location != null) {
@@ -90,6 +91,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                         double longitude = currentLocation.longitude + (Math.random() - 0.5) * 0.01;
                         LatLng storeLocation = new LatLng(latitude, longitude);
                         mMap.addMarker(new MarkerOptions().position(storeLocation).title("Orange Store"));
+
                     }
                 } else {
                     Toast.makeText(getActivity(), "Unable to get current location", Toast.LENGTH_SHORT).show();

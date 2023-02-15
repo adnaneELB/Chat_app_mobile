@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/qr_tab"
+        android:title="QR"
+        android:icon="@drawable/baseline_qr_code_scanner_24"
+        app:showAsAction="ifRoom">
+
+    </item>
+    <item
+        android:id="@+id/page_tab"
+        android:title="Site">
+
+    </item>
+    <item
+        android:id="@+id/ajustes_tab"
+        android:title="Ajustes">
+
+    </item>
+
+</menu>
