@@ -76,11 +76,11 @@ public class Calls_Fragment extends Fragment {
         recyclerView =view.findViewById(R.id.calls_rcy);
         arrayList= new ArrayList<>();
         arrayList.add(new Llamadas("adnane",R.drawable.image1,R.drawable.baseline_call_made_24));
+        arrayList.add(new Llamadas("yassine",R.drawable.imagen2,R.drawable.baseline_call_received_24));
+        arrayList.add(new Llamadas("adnane",R.drawable.imagen3,R.drawable.baseline_call_made_24));
         arrayList.add(new Llamadas("yassine",R.drawable.image1,R.drawable.baseline_call_received_24));
-        arrayList.add(new Llamadas("adnane",R.drawable.image1,R.drawable.baseline_call_made_24));
-        arrayList.add(new Llamadas("yassine",R.drawable.image1,R.drawable.baseline_call_received_24));
-        arrayList.add(new Llamadas("adnane",R.drawable.image1,R.drawable.baseline_call_made_24));
-        arrayList.add(new Llamadas("yassine",R.drawable.image1,R.drawable.baseline_call_received_24));
+        arrayList.add(new Llamadas("adnane",R.drawable.imagen2,R.drawable.baseline_call_made_24));
+        arrayList.add(new Llamadas("yassine",R.drawable.imagen3,R.drawable.baseline_call_received_24));
 
         adapter= new Calls_Card_View(container.getContext(),arrayList);
         LinearLayoutManager llm=new LinearLayoutManager(getContext(),recyclerView.VERTICAL,false);

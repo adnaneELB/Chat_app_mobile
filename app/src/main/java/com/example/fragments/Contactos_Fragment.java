@@ -65,6 +65,7 @@ public class Contactos_Fragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -75,15 +76,15 @@ public class Contactos_Fragment extends Fragment {
         recyclerView =view.findViewById(R.id.chat_rcy);
         arrayList= new ArrayList<>();
         arrayList.add(new Contactos("adnaen",R.drawable.image1));
-        arrayList.add(new Contactos("yassine",R.drawable.image1));
-        arrayList.add(new Contactos("badre",R.drawable.image1));
-        arrayList.add(new Contactos("julian",R.drawable.image1));
+        arrayList.add(new Contactos("yassine",R.drawable.imagen2));
+        arrayList.add(new Contactos("badre",R.drawable.imagen3));
+        arrayList.add(new Contactos("julian",R.drawable.imagen2));
         arrayList.add(new Contactos("roman",R.drawable.image1));
-        arrayList.add(new Contactos("alejandro",R.drawable.image1));
-        arrayList.add(new Contactos("yassine",R.drawable.image1));
+        arrayList.add(new Contactos("alejandro",R.drawable.imagen3));
+        arrayList.add(new Contactos("yassine",R.drawable.imagen2));
         arrayList.add(new Contactos("badre",R.drawable.image1));
-        arrayList.add(new Contactos("julian",R.drawable.image1));
-        arrayList.add(new Contactos("roman",R.drawable.image1));
+        arrayList.add(new Contactos("julian",R.drawable.imagen2));
+        arrayList.add(new Contactos("roman",R.drawable.imagen3));
         arrayList.add(new Contactos("alejandro",R.drawable.image1));
         adapter= new Chat_Recycle_View(container.getContext(),arrayList);
         LinearLayoutManager llm=new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);

@@ -72,7 +72,6 @@ public class RegisterActivity extends AppCompatActivity {
                     if(task.isSuccessful()){
                         FirebaseUser user = task.getResult().getUser();
                         String userId = user.getUid();
-
                         // Store user type in Firebase Database
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
                         DatabaseReference userRef = database.getReference("users").child(userId);

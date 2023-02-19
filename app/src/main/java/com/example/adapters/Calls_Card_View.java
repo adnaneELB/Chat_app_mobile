@@ -35,7 +35,7 @@ public class Calls_Card_View  extends RecyclerView.Adapter<Calls_Card_View.ViewH
 
     @Override
     public void onBindViewHolder(@NonNull Calls_Card_View.ViewHolder holder, int position) {
-
+        //binding the components with Contactos attributes
         holder.profile_image.setImageResource(arrayList.get(position).getFoto());
         holder.call_image.setImageResource(arrayList.get(position).getCallfoto());
         holder.textView.setText(arrayList.get(position).getNombre());

@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        //switch the fragment from item click
         Fragment selectedFragment = null;
        switch (item.getItemId()){
            case R.id.qr_tab:
@@ -106,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
+    //set the layout depend of the user type
     void setLayout(){
         if (firebaseUser == null) {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));

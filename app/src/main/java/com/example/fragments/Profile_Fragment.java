@@ -11,6 +11,9 @@ import android.widget.ImageView;
 
 import com.example.application_chat.R;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link Profile_Fragment#newInstance} factory method to
@@ -19,6 +22,7 @@ import com.example.application_chat.R;
 public class Profile_Fragment extends Fragment {
     ImageView image;
     View view;
+    ArrayList<Integer>images= new ArrayList<Integer>();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -58,15 +62,19 @@ public class Profile_Fragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+        images.add(R.drawable.image1);
+        images.add(R.drawable.imagen2);
+        images.add(R.drawable.imagen3);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         view= inflater.inflate(R.layout.fragment_profile_, container, false);
-        view.findViewById(R.id.profile_img).setBackgroundResource(R.drawable.image1);
+        int rand = new Random().nextInt(3);
+        view.findViewById(R.id.profile_img).setBackgroundResource(images.get(rand));
         return view;
     }
 }

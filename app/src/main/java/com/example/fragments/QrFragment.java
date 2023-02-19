@@ -46,7 +46,6 @@ public class QrFragment extends Fragment  {
                 @Override
                 public void onClick(View v) {
                     IntentIntegrator integrator = IntentIntegrator.forSupportFragment(QrFragment.this);
-
                     integrator.setOrientationLocked(false);
                     integrator.setPrompt("Scan QR code");
                     integrator.setBeepEnabled(false);

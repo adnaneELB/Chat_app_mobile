@@ -41,7 +41,7 @@ public class Chat_Recycle_View extends RecyclerView.Adapter<Chat_Recycle_View.Vi
 
     @Override
     public void onBindViewHolder(@NonNull Chat_Recycle_View.ViewHolder holder, int position) {
-
+        //binding the components with Contactos attributes
     holder.imageView.setImageResource(arrayList.get(position).getFoto());
     holder.textView.setText(arrayList.get(position).getNombre());
     
@@ -59,17 +59,20 @@ public class Chat_Recycle_View extends RecyclerView.Adapter<Chat_Recycle_View.Vi
             super(itemView);
             imageView=itemView.findViewById(R.id.img);
             textView=itemView.findViewById(R.id.nombre);
-            itemView.setOnClickListener(new View.OnClickListener() {
+            //long click to share the contactos details
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
-                public void onClick(View view) {
+                public boolean onLongClick(View view) {
+                    //share the contactos details
                     Intent intent =new Intent(Intent.ACTION_SEND);
                     intent.setType("text/plain");
                     intent.putExtra(Intent.EXTRA_SUBJECT,"text");
                     intent.putExtra(Intent.EXTRA_TEXT,textView.getText().toString());
                     view.getContext().startActivity(Intent.createChooser(intent,"share via"));
-
+                    return true;
                 }
             });
+
         }
     }
 }
