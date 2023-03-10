@@ -35,22 +35,19 @@ public class MainActivity extends AppCompatActivity {
     FirebaseUser firebaseUser;
     String userType="";
     Fragment selectedFragment;
-
-
     @SuppressLint("SuspiciousIndentation")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
+        String email=getIntent().getStringExtra("email");
+        String user="";
         fireAuth = FirebaseAuth.getInstance();
         firebaseUser = fireAuth.getCurrentUser();
-
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(firebaseUser.getUid());
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                 if (dataSnapshot.child("userType").exists() && dataSnapshot.child("userType").getValue(String.class).equals("premium")) {
                     userType = "premium";
                     setContentView(R.layout.activity_main_premium);
@@ -63,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
                     Toolbar materialToolbar=findViewById(R.id.toolbar);
                     setSupportActionBar(materialToolbar);
                     setLayout();
+
+
+
 
 
                 }

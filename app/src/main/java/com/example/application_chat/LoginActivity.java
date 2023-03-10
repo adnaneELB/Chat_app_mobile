@@ -63,7 +63,9 @@ public class LoginActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         Toast.makeText(LoginActivity.this, "Usuario conectado correctamente", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class).putExtra("email",email));
+
                     }else{
                         Toast.makeText(LoginActivity.this, "Iniciar sesión error: "+ task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
